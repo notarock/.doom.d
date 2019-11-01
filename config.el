@@ -9,12 +9,11 @@
 (setq doom-font (font-spec :family "Pragmata Pro Mono" :size 16)
       doom-big-font (font-spec :family "Pragmata Pro Mono" :size 30))
 
-(if (equal (display-pixel-width) 2550)
+(if (equal (display-pixel-width) 2560)
     (setq doom-font (font-spec :family "Pragmata Pro Mono" :size 20)
-          doom-big-font (font-spec :family "Pragmata Pro Mono" :size 36))
-  (setq doom-font (font-spec :family "Pragmata Pro Mono" :size 16)
-        doom-big-font (font-spec :family "Pragmata Pro Mono" :size 30)))
-
+           doom-big-font (font-spec :family "Pragmata Pro Mono" :size 36))
+     (setq doom-font (font-spec :family "Pragmata Pro Mono" :size 16)
+           doom-big-font (font-spec :family "Pragmata Pro Mono" :size 30)))
 
 ;; Lets drag stuff aroung using hjk;
 (map! :ne "C-S-k" #'drag-stuff-up)
