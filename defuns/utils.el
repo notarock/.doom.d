@@ -1,4 +1,4 @@
-;;; ~/.doom.d/functions.el -*- lexical-binding: t; -*-
+;;; ~/.doom.d/defuns/utils.el -*- lexical-binding: t; -*-
 ;; Contain additionnal functions
 
 ;; Function to set position/size on startup
