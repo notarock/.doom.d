@@ -12,8 +12,6 @@
     (set-frame-position (selected-frame) a-left a-top)
     (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
 
-(equal ( display-pixel-width ) 2550)
-
 ;; Set initial position
 (setq frame-resize-pixelwise t)
 (my/set-initial-frame)
