@@ -9,10 +9,10 @@
       display-line-numbers-type 'relative)
 
 (if (equal (display-pixel-width) 2560)
-    (setq doom-font (font-spec :family "Hack" :size 20)
-          doom-big-font (font-spec :family "Hack" :size 36))
-  (setq doom-font (font-spec :family "Hack" :size 16)
-        doom-big-font (font-spec :family "Hack" :size 30)))
+    (setq doom-font (font-spec :family "Iosevka" :size 20)
+          doom-big-font (font-spec :family "Iosevka" :size 36))
+  (setq doom-font (font-spec :family "Iosevka" :size 16)
+        doom-big-font (font-spec :family "Iosevka" :size 30)))
 
 ;; Lets drag stuff aroung using hjk;
 (map! :ne "C-S-k" #'drag-stuff-up)
@@ -35,4 +35,4 @@
 
 (map! [remap org-capture] nil)
 
-(setq fancy-splash-image "~/.doom.d/sunglass.png")
+(setq fancy-splash-image "~/.doom.d/notarock.png")
