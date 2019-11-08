@@ -21,3 +21,7 @@
   (interactive)
   (save-excursion
     (indent-region (point-min) (point-max) nil)))
+
+(defun insert-random-hash ()
+  (interactive)
+  (insert (string-trim (shell-command-to-string "< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"))))

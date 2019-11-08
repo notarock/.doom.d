@@ -26,6 +26,8 @@
 (map! :ne "SPC j g" #'dumb-jump-go)
 (map! :ne "SPC j b" #'dumb-jump-back)
 
+(map! :ne "SPC s h" #'insert-random-hash)
+
 ;; On vsplit using V, focus the new frame
 (map! :ne "SPC w V" (lambda () (interactive)(evil-window-vsplit) (other-window 1)))
 

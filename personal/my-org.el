@@ -16,7 +16,7 @@
         :n "M-j" #'org-metadown
         :n "M-k" #'org-metaup)
   (setq org-bullets-bullet-list '("◆")
-        org-capture-templates '(("j" "Journal" entry (file+datetree org-journal-file)
+        org-capture-templates '(("j" "Journal" entry (file+oldp+datetree org-journal-file)
                                  "* %?\nEntered on %U\n")
                                 ("t" "Todo:" entry (file+headline org-todo-file "Todo List")
                                  "* TODO: %?\nEntered on %U\n")
