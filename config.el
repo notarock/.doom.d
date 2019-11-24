@@ -8,6 +8,8 @@
 (setq doom-theme 'base16-helios
       display-line-numbers-type 'relative)
 
+(global-git-gutter-mode +1)
+
 (if (equal (display-pixel-width) 2560)
     (setq doom-font (font-spec :family "Iosevka" :size 20)
           doom-big-font (font-spec :family "Iosevka" :size 36))
@@ -36,5 +38,6 @@
 (load-file "~/.doom.d/defuns/utils.el")
 
 (map! [remap org-capture] nil)
+
 
 (setq fancy-splash-image "~/.doom.d/notarock.png")
