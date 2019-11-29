@@ -6,7 +6,9 @@
 
 ;; Fonts too
 (setq doom-theme 'base16-helios
+      fancy-splash-image "~/.doom.d/notarock.png"
       display-line-numbers-type 'relative)
+
 
 (global-git-gutter-mode +1)
 
