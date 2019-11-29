@@ -11,10 +11,10 @@
 (global-git-gutter-mode +1)
 
 (if (equal (display-pixel-width) 2560)
-    (setq doom-font (font-spec :family "Iosevka" :size 20)
-          doom-big-font (font-spec :family "Iosevka" :size 36))
-  (setq doom-font (font-spec :family "Iosevka" :size 16)
-        doom-big-font (font-spec :family "Iosevka" :size 30)))
+    (setq doom-font (font-spec :family "Monoid" :size 16)
+          doom-big-font (font-spec :family "Monoid" :size 30))
+  (setq doom-font (font-spec :family "Monoid" :size 12)
+        doom-big-font (font-spec :family "Monoid" :size 24)))
 
 ;; Lets drag stuff aroung using hjk;
 (map! :ne "C-S-k" #'drag-stuff-up)
@@ -41,3 +41,25 @@
 
 
 (setq fancy-splash-image "~/.doom.d/notarock.png")
+
+;; Set the padding between lines
+(defvar line-padding 2)
+(defun add-line-padding ()
+  "Add extra padding between lines"
+
+  ; remove padding overlays if they already exist
+  (let ((overlays (overlays-at (point-min))))
+    (while overlays
+      (let ((overlay (car overlays)))
+        (if (overlay-get overlay 'is-padding-overlay)
+            (delete-overlay overlay)))
+      (setq overlays (cdr overlays))))
+
+  ; add a new padding overlay
+  (let ((padding-overlay (make-overlay (point-min) (point-max))))
+    (overlay-put padding-overlay 'is-padding-overlay t)
+    (overlay-put padding-overlay 'line-spacing (* .1 line-padding))
+    (overlay-put padding-overlay 'line-height (+ 1 (* .1 line-padding))))
+  (setq mark-active nil))
+
+(add-hook 'buffer-list-update-hook 'add-line-padding)
