@@ -5,7 +5,7 @@
 (require 'base16-theme)
 
 ;; Fonts too
-(setq doom-theme 'base16-helios
+(setq doom-theme 'base16-hopscotch
       fancy-splash-image "~/.doom.d/notarock.png"
       display-line-numbers-type 'relative)
 
@@ -17,6 +17,8 @@
           doom-big-font (font-spec :family "Monoid" :size 30))
   (setq doom-font (font-spec :family "Monoid" :size 12)
         doom-big-font (font-spec :family "Monoid" :size 24)))
+
+
 
 ;; Lets drag stuff aroung using hjk;
 (map! :ne "C-S-k" #'drag-stuff-up)
@@ -41,7 +43,6 @@
 
 (map! [remap org-capture] nil)
 
-
 (setq fancy-splash-image "~/.doom.d/notarock.png")
 
 ;; Set the padding between lines
@@ -63,5 +64,10 @@
     (overlay-put padding-overlay 'line-spacing (* .1 line-padding))
     (overlay-put padding-overlay 'line-height (+ 1 (* .1 line-padding))))
   (setq mark-active nil))
+
+
+;; Uncomment this to start in open maximized
+;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
 (add-hook 'buffer-list-update-hook 'add-line-padding)
