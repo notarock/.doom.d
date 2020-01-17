@@ -1,22 +1,67 @@
-;;; .doom.d/config.el -*- lexical-binding: t; -*-
-;; Place your private configuration here
+;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
 
-;; themes are THE MOST important setting
-(require 'base16-theme)
+;; Place your private configuration here! Remember, you do not need to run 'doom
+;; refresh' after modifying this file!
 
-;; Fonts too
-(setq doom-theme 'base16-hopscotch
-      fancy-splash-image "~/.doom.d/notarock.png"
-      display-line-numbers-type 'relative)
 
-(global-git-gutter-mode +1)
+;; These are used for a number of things, particularly for GPG configuration,
+;; some email clients, file templates and snippets.
+(setq user-full-name "Roch D'Amour"
+      user-mail-address "john@doe.com")
 
+;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
+;; are the three important ones:
+;;
+;; + `doom-font'
+;; + `doom-variable-pitch-font'
+;; + `doom-big-font' -- used for `doom-big-font-mode'
+;;
+;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
+;; font string. You generally only need these two:
 (if (equal (display-pixel-width) 2560)
     (setq doom-font (font-spec :family "Anka/coder Condensed" :size 20)
           doom-big-font (font-spec :family "Anka/coder Condensed" :size 30))
   (setq doom-font (font-spec :family "Anka/coder Condensed" :size 14)
         doom-big-font (font-spec :family "Anka/coder Condensed" :size 24)))
 
+(require 'base16-theme)
+
+;; There are two ways to load a theme. Both assume the theme is installed and
+;; available. You can either set `doom-theme' or manually load a theme with the
+;; `load-theme' function. These are the defaults.
+(setq doom-theme 'base16-hopscotch)
+
+;; If you intend to use org, it is recommended you change this!
+;; (setq org-directory "~/org/")
+
+;; If you want to change the style of line numbers, change this to `relative' or
+;; `nil' to disable it:
+(setq display-line-numbers-type t)
+
+;; Here are some additional functions/macros that could help you configure Doom:
+;;
+;; - `load!' for loading external *.el files relative to this one
+;; - `use-package' for configuring packages
+;; - `after!' for running code after a package has loaded
+;; - `add-load-path!' for adding directories to the `load-path', where Emacs
+;;   looks when you load packages with `require' or `use-package'.
+;; - `map!' for binding new keys
+;;
+;; To get information about any of these functions/macros, move the cursor over
+;; the highlighted symbol at press 'K' (non-evil users must press 'C-c g k').
+;; This will open documentation for it, including demos of how they are used.
+;;
+;; You can also try 'gd' (or 'C-c g d') to jump to their definition and see how
+;; they are implemented.
+
+;;; Here lies my personnal configurations.
+(setq fancy-splash-image "~/.doom.d/notarock.png")
+
+;;; Imports
+(load! "~/.doom.d/personal/my-org.el")
+(load! "~/.doom.d/defuns/utils.el")
+
+;;; Keybindings
 ;; Lets drag stuff aroung using hjk;
 (map! :ne "C-S-k" #'drag-stuff-up)
 (map! :ne "C-S-j" #'drag-stuff-down)
@@ -34,13 +79,9 @@
 ;; On vsplit using V, focus the new frame
 (map! :ne "SPC w V" (lambda () (interactive)(evil-window-vsplit) (other-window 1)))
 
-;; Load additionnal configuration packages
-(load-file "~/.doom.d/personal/my-org.el")
-(load-file "~/.doom.d/defuns/utils.el")
-
 (map! [remap org-capture] nil)
 
-(setq fancy-splash-image "~/.doom.d/notarock.png")
+(global-git-gutter-mode +1)
 
 ;; Set the padding between lines
 (defvar line-padding 2)
