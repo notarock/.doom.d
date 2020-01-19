@@ -7,7 +7,7 @@
 ;; These are used for a number of things, particularly for GPG configuration,
 ;; some email clients, file templates and snippets.
 (setq user-full-name "Roch D'Amour"
-      user-mail-address "john@doe.com")
+      user-mail-address "roch.damour@gmail.com")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
 ;; are the three important ones:
@@ -19,10 +19,10 @@
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
 (if (equal (display-pixel-width) 2560)
-    (setq doom-font (font-spec :family "Anka/coder Condensed" :size 20)
-          doom-big-font (font-spec :family "Anka/coder Condensed" :size 30))
-  (setq doom-font (font-spec :family "Anka/coder Condensed" :size 14)
-        doom-big-font (font-spec :family "Anka/coder Condensed" :size 24)))
+    (setq doom-font (font-spec :family "Pragmata Pro mono" :size 20)
+          doom-big-font (font-spec :family "Pragmata Pro mono" :size 30))
+  (setq doom-font (font-spec :family "Pragmata Pro mono" :size 14)
+        doom-big-font (font-spec :family "Pragmata Pro mono" :size 24)))
 
 (require 'base16-theme)
 
@@ -84,26 +84,28 @@
 (global-git-gutter-mode +1)
 
 ;; Set the padding between lines
-(defvar line-padding 2)
+(defvar line-padding 3)
 (defun add-line-padding ()
   "Add extra padding between lines"
-  ; remove padding overlays if they already exist
+                                        ; remove padding overlays if they already exist
   (let ((overlays (overlays-at (point-min))))
     (while overlays
       (let ((overlay (car overlays)))
         (if (overlay-get overlay 'is-padding-overlay)
             (delete-overlay overlay)))
       (setq overlays (cdr overlays))))
-  ; add a new padding overlay
+                                        ; add a new padding overlay
   (let ((padding-overlay (make-overlay (point-min) (point-max))))
     (overlay-put padding-overlay 'is-padding-overlay t)
     (overlay-put padding-overlay 'line-spacing (* .1 line-padding))
     (overlay-put padding-overlay 'line-height (+ 1 (* .1 line-padding))))
   (setq mark-active nil))
 
+(add-line-padding)
+
 ;; Uncomment this to start in open maximized
 ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
-; Add line padding when font is ugly
-;; (add-hook 'buffer-list-update-hook 'add-line-padding)
+                                        ; Add line padding when font is ugly
+(add-hook 'buffer-list-update-hook 'add-line-padding)

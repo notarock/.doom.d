@@ -54,3 +54,6 @@
 (package! base16-theme)
 (package! org-fancy-priorities)
 (package! k8s-mode)
+(package! nix-mode)
+(package! org-reveal)
+(package! ox-reveal)
