@@ -1,7 +1,7 @@
 ;;; ~/.doom.d/personal/my-org.el -*- lexical-binding: t; -*-
 ;; Contains All org-mode related configuration
 
-(def-package! org-fancy-priorities
+(use-package org-fancy-priorities
   :hook (org-mode . org-fancy-priorities-mode)
   :config
   (setq org-fancy-priorities-list '("■" "■" "■")))

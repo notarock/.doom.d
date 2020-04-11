@@ -18,18 +18,22 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
+;; (setq font-family "JetBrains Mono Medium")
+;; (setq font-family "M+ 1m")
+(setq font-family "Iosevka")
+
 (if (equal (display-pixel-width) 2560)
-    (setq doom-font (font-spec :family "Pragmata Pro mono" :size 20)
-          doom-big-font (font-spec :family "Pragmata Pro mono" :size 30))
-  (setq doom-font (font-spec :family "Pragmata Pro mono" :size 14)
-        doom-big-font (font-spec :family "Pragmata Pro mono" :size 24)))
+    (setq doom-font (font-spec :family font-family :size 20)
+          doom-big-font (font-spec :family font-family :size 30))
+  (setq doom-font (font-spec :family font-family :size 14)
+        doom-big-font (font-spec :family font-family :size 24)))
 
 (require 'base16-theme)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'base16-horizon-dark)
+(setq doom-theme 'doom-gruvbox)
 
 ;; If you intend to use org, it is recommended you change this!
 ;; (setq org-directory "~/org/")
@@ -84,28 +88,28 @@
 (global-git-gutter-mode +1)
 
 ;; Set the padding between lines
-(defvar line-padding 3)
-(defun add-line-padding ()
-  "Add extra padding between lines"
-                                        ; remove padding overlays if they already exist
-  (let ((overlays (overlays-at (point-min))))
-    (while overlays
-      (let ((overlay (car overlays)))
-        (if (overlay-get overlay 'is-padding-overlay)
-            (delete-overlay overlay)))
-      (setq overlays (cdr overlays))))
-                                        ; add a new padding overlay
-  (let ((padding-overlay (make-overlay (point-min) (point-max))))
-    (overlay-put padding-overlay 'is-padding-overlay t)
-    (overlay-put padding-overlay 'line-spacing (* .1 line-padding))
-    (overlay-put padding-overlay 'line-height (+ 1 (* .1 line-padding))))
-  (setq mark-active nil))
+;; (defvar line-padding 3)
+;; (defun add-line-padding ()
+  ;; "Add extra padding between lines"
+                                        ;; ; remove padding overlays if they already exist
+  ;; (let ((overlays (overlays-at (point-min))))
+    ;; (while overlays
+      ;; (let ((overlay (car overlays)))
+        ;; (if (overlay-get overlay 'is-padding-overlay)
+            ;; (delete-overlay overlay)))
+      ;; (setq overlays (cdr overlays))))
+                                        ;; ; add a new padding overlay
+  ;; (let ((padding-overlay (make-overlay (point-min) (point-max))))
+    ;; (overlay-put padding-overlay 'is-padding-overlay t)
+    ;; (overlay-put padding-overlay 'line-spacing (* .1 line-padding))
+    ;; (overlay-put padding-overlay 'line-height (+ 1 (* .1 line-padding))))
+  ;; (setq mark-active nil))
 
-(add-line-padding)
+;; (add-line-padding)
 
 ;; Uncomment this to start in open maximized
 ;; (add-to-list 'initial-frame-alist '(fullscreen . maximized))
 ;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 
                                         ; Add line padding when font is ugly
-(add-hook 'buffer-list-update-hook 'add-line-padding)
+;; (add-hook 'buffer-list-update-hook 'add-line-padding)

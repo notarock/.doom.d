@@ -4,7 +4,7 @@
 ;; Function to set position/size on startup
 (defun my/set-initial-frame ()
   "Set initial frame size and position"
-  (let* ((base-factor 0.80)
+  (let* ((base-factor 0.90)
          (a-width (* (display-pixel-width) base-factor))
          (a-height (* (display-pixel-height) base-factor))
          (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
