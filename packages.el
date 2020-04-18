@@ -52,6 +52,7 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 
 (package! base16-theme)
+(package! melancholy-theme)
 (package! org-fancy-priorities)
 (package! k8s-mode)
 (package! nix-mode)

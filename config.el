@@ -20,7 +20,7 @@
 ;; font string. You generally only need these two:
 ;; (setq font-family "JetBrains Mono Medium")
 ;; (setq font-family "M+ 1m")
-(setq font-family "Iosevka")
+(setq font-family "Fantasque Sans Mono")
 
 (if (equal (display-pixel-width) 2560)
     (setq doom-font (font-spec :family font-family :size 20)
@@ -28,12 +28,11 @@
   (setq doom-font (font-spec :family font-family :size 14)
         doom-big-font (font-spec :family font-family :size 24)))
 
-(require 'base16-theme)
-
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. These are the defaults.
-(setq doom-theme 'doom-gruvbox)
+(setq doom-theme 'doom-snazzy)
+;; For some readon, doom-theme remove font config
 
 ;; If you intend to use org, it is recommended you change this!
 ;; (setq org-directory "~/org/")
@@ -113,3 +112,5 @@
 
                                         ; Add line padding when font is ugly
 ;; (add-hook 'buffer-list-update-hook 'add-line-padding)
+
+;; (use-package undo-fu-session)
