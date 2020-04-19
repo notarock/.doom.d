@@ -189,10 +189,23 @@ Uses dumb-jump to find functions, variables, and other definition
 
 ** Others
 *** Hacks
+Org capture weird behaviour fix
+
 #+BEGIN_SRC emacs-lisp
 (map! [remap org-capture] nil)
 #+END_SRC
-*** Additionnal modes
+
+Function used to recompile this repository's README
+
+#+BEGIN_SRC emacs-lisp
+;;  (shell-command "pandoc config.org -o README.md")
+#+END_SRC
+
+*** modes
+Enable global git-gutter-mode
+
 #+BEGIN_SRC emacs-lisp
 (global-git-gutter-mode +1)
 #+END_SRC
+
+*** Hooks

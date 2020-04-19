@@ -4,8 +4,8 @@ Notarock\'s Doom-Emacs Literate Configuration
 This file is heavily inspired by doom-emacs\'s base \`config.el\` file.
 In fact, it\'s just my personnal \`config.el\` translated to org-mode so
 
-Basics
-------
+User config
+-----------
 
 These are used for a number of things, particularly for GPG
 configuration, some email clients, file templates and snippets.
@@ -18,6 +18,15 @@ configuration, some email clients, file templates and snippets.
 Theming
 -------
 
+THis function is probably the most important peice of configuration in
+this whole repository.
+
+``` {.commonlisp org-language="emacs-lisp"}
+(setq doom-theme 'doom-snazzy)
+```
+
+### Font
+
 Doom exposes five (optional) variables for controlling fonts in Doom.
 Here are the three important ones:
 
@@ -26,26 +35,23 @@ Here are the three important ones:
 -   \`doom-big-font\' -- used for \`doom-big-font-mode\'
 
 They all accept either a font-spec, font string (\"Input Mono-12\"), or
-xlfd font string. You generally only need these two:
+xlfd font string.
 
 ``` {.commonlisp org-language="emacs-lisp"}
-;; (setq font-family "JetBrains Mono Medium")
-;; (setq font-family "M+ 1m")
 (setq font-family "Fantasque Sans Mono")
+```
 
+This snipper adjust the font size based on if I am currently using emacs
+on my HiDPI laptop screen, or on anything else.
+
+TODO: Maybe add more options?
+
+``` {.commonlisp org-language="emacs-lisp"}
 (if (equal (display-pixel-width) 2560)
     (setq doom-font (font-spec :family font-family :size 20)
           doom-big-font (font-spec :family font-family :size 30))
   (setq doom-font (font-spec :family font-family :size 14)
         doom-big-font (font-spec :family font-family :size 24)))
-```
-
-There are two ways to load a theme. Both assume the theme is installed
-and available. You can either set \`doom-theme\' or manually load a
-theme with the \`load-theme\' function. These are the defaults.
-
-``` {.commonlisp org-language="emacs-lisp"}
-(setq doom-theme 'doom-snazzy)
 ```
 
 want to change the style of line numbers, change this to \`relative\' or
@@ -55,57 +61,114 @@ want to change the style of line numbers, change this to \`relative\' or
 (setq display-line-numbers-type t)
 ```
 
-Org-mode
---------
+### Splash screen picture
 
-If you intend to use org, it is recommended you change this!
+Set this picture as the splash image
 
-::: {.emacs-lisp}
-;; (setq org-directory \"\~/org/\")
-:::
-
-Mics
-----
-
-Here are some additional functions/macros that could help you configure
-Doom:
-
--   \`load!\' for loading external \*.el files relative to this one
--   \`use-package\' for configuring packages
--   \`after!\' for running code after a package has loaded
--   \`add-load-path!\' for adding directories to the \`load-path\',
-    where Emacs looks when you load packages with \`require\' or
-    \`use-package\'.
--   \`map!\' for binding new keys
-
-To get information about any of these functions/macros, move the cursor
-over the highlighted symbol at press \'K\' (non-evil users must press
-\'C-c g k\'). This will open documentation for it, including demos of
-how they are used. You can also try \'gd\' (or \'C-c g d\') to jump to
-their definition and see how they are implemented.
-
-Here lies my personnal configurations.
-======================================
+![Notarock\'s splash image](./notarock.png "notarock.png")
 
 ``` {.commonlisp org-language="emacs-lisp"}
-
 (setq fancy-splash-image "~/.doom.d/notarock.png")
-
 ```
 
-Additionnal files
------------------
+### Enable pixelwise resizing
+
+``` {.commonlisp org-language="emacs-lisp"}
+(setq frame-resize-pixelwise t)
+```
+
+Aditionnal functions
+--------------------
+
+This function reposition Emacs on startup:
+
+-   Width and height takes up 80% of the screen.
+-   Emacs is positionned right in the certer of the.
+
+``` {.commonlisp org-language="emacs-lisp"}
+(defun my/set-initial-frame ()
+  "Set initial frame size and position"
+  (let* ((base-factor 0.80)
+         (a-width (* (display-pixel-width) base-factor))
+         (a-height (* (display-pixel-height) base-factor))
+         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
+         (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
+    (set-frame-position (selected-frame) a-left a-top)
+    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
+```
+
+Launch the function.
+
+``` {.commonlisp org-language="emacs-lisp"}
+(my/set-initial-frame)
+```
+
+Top to bottom file indentation.
+
+``` {.commonlisp org-language="emacs-lisp"}
+(defun indent-buffer ()
+  "Indent the whole buffer"
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+```
+
+Insert a generated 64 character long random string.
+
+``` {.commonlisp org-language="emacs-lisp"}
+(defun insert-random-hash ()
+  (interactive)
+  (insert (string-trim (shell-command-to-string "< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"))))
+```
+
+Mode-specific
+-------------
 
 ### Org-mode
 
+Contains All org-mode related configuration
+
+Good looking bullet point, all about the eye-candy
+
 ``` {.commonlisp org-language="emacs-lisp"}
-(load! "~/.doom.d/personal/my-org.el")
+(use-package org-fancy-priorities
+  :hook (org-mode . org-fancy-priorities-mode)
+  :config
+  (setq org-fancy-priorities-list '("■" "■" "■")))
 ```
 
-### Aditionnal functions
+Define org files path
 
 ``` {.commonlisp org-language="emacs-lisp"}
-(load! "~/.doom.d/defuns/utils.el")
+(setq org-directory "~/org/"
+      org-todo-file (concat org-directory "todo.org")
+      org-notes-file (concat org-directory "notes.org")
+      org-journal-file (concat org-directory "journal.org"))
+```
+
+Stuff that get loaded in when org-mode is initiated
+
+``` {.commonlisp org-language="emacs-lisp"}
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup)
+  (setq org-bullets-bullet-list '("◆")
+        org-capture-templates '(("j" "Journal" entry (file+datetree org-journal-file)
+                                 "* %?\nEntered on %U\n")
+                                ("t" "Todo:" entry (file+headline org-todo-file "Todo List")
+                                 "* TODO: %?\nEntered on %U\n")
+                                ("n" "Note" entry (file org-notes-file)
+                                 "* NOTE %?\n%U" :empty-lines 1)
+                                ("N" "Note with Clipboard" entry (file org-notes-file)
+                                 "* NOTE %?\n%U\n   %c" :empty-lines 1))
+        org-todo-keyword-faces (quote (("TODO" :foreground "firebrick2" :weight bold)
+                                       ("DONE" :foreground "OliveDrab2" :weight bold :strike-through t)
+                                       ("CANCELLED" :foreground "chocolate1" :weight bold :strike-through t)
+                                       ("WAITING" :foreground "cyan4" :weight bold)))
+        org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                            (sequence "WAITING(w)" "|" "CANCELLED(c)"))
+        org-log-done t))
 ```
 
 Keybinds
@@ -153,12 +216,24 @@ Others
 
 ### Hacks
 
+Org capture weird behaviour fix
+
 ``` {.commonlisp org-language="emacs-lisp"}
 (map! [remap org-capture] nil)
 ```
 
-### Additionnal modes
+Function used to recompile this repository\'s README
+
+``` {.commonlisp org-language="emacs-lisp"}
+;;  (shell-command "pandoc config.org -o README.md")
+```
+
+### modes
+
+Enable global git-gutter-mode
 
 ``` {.commonlisp org-language="emacs-lisp"}
 (global-git-gutter-mode +1)
 ```
+
+### Hooks

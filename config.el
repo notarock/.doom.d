@@ -87,4 +87,6 @@
 
 (map! [remap org-capture] nil)
 
+;;  (shell-command "pandoc config.org -o README.md")
+
 (global-git-gutter-mode +1)
