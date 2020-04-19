@@ -1,8 +1,8 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-;; (setq font-family "JetBrains Mono Medium")
-;; (setq font-family "M+ 1m")
+(setq doom-theme 'doom-snazzy)
+
 (setq font-family "Fantasque Sans Mono")
 
 (if (equal (display-pixel-width) 2560)
@@ -11,15 +11,64 @@
   (setq doom-font (font-spec :family font-family :size 14)
         doom-big-font (font-spec :family font-family :size 24)))
 
-(setq doom-theme 'doom-snazzy)
-
 (setq display-line-numbers-type t)
 
 (setq fancy-splash-image "~/.doom.d/notarock.png")
 
-(load! "~/.doom.d/personal/my-org.el")
+(setq frame-resize-pixelwise t)
 
-(load! "~/.doom.d/defuns/utils.el")
+(defun my/set-initial-frame ()
+  "Set initial frame size and position"
+  (let* ((base-factor 0.80)
+         (a-width (* (display-pixel-width) base-factor))
+         (a-height (* (display-pixel-height) base-factor))
+         (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
+         (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
+    (set-frame-position (selected-frame) a-left a-top)
+    (set-frame-size (selected-frame) (truncate a-width)  (truncate a-height) t)))
+
+(my/set-initial-frame)
+
+(defun indent-buffer ()
+  "Indent the whole buffer"
+  (interactive)
+  (save-excursion
+    (indent-region (point-min) (point-max) nil)))
+
+(defun insert-random-hash ()
+  (interactive)
+  (insert (string-trim (shell-command-to-string "< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"))))
+
+(use-package org-fancy-priorities
+  :hook (org-mode . org-fancy-priorities-mode)
+  :config
+  (setq org-fancy-priorities-list '("■" "■" "■")))
+
+(setq org-directory "~/org/"
+      org-todo-file (concat org-directory "todo.org")
+      org-notes-file (concat org-directory "notes.org")
+      org-journal-file (concat org-directory "journal.org"))
+
+(after! org
+  (map! :map org-mode-map
+        :n "M-j" #'org-metadown
+        :n "M-k" #'org-metaup)
+  (setq org-bullets-bullet-list '("◆")
+        org-capture-templates '(("j" "Journal" entry (file+datetree org-journal-file)
+                                 "* %?\nEntered on %U\n")
+                                ("t" "Todo:" entry (file+headline org-todo-file "Todo List")
+                                 "* TODO: %?\nEntered on %U\n")
+                                ("n" "Note" entry (file org-notes-file)
+                                 "* NOTE %?\n%U" :empty-lines 1)
+                                ("N" "Note with Clipboard" entry (file org-notes-file)
+                                 "* NOTE %?\n%U\n   %c" :empty-lines 1))
+        org-todo-keyword-faces (quote (("TODO" :foreground "firebrick2" :weight bold)
+                                       ("DONE" :foreground "OliveDrab2" :weight bold :strike-through t)
+                                       ("CANCELLED" :foreground "chocolate1" :weight bold :strike-through t)
+                                       ("WAITING" :foreground "cyan4" :weight bold)))
+        org-todo-keywords '((sequence "TODO(t)" "NEXT(n)" "|" "DONE(d)")
+                            (sequence "WAITING(w)" "|" "CANCELLED(c)"))
+        org-log-done t))
 
 (map! :ne "C-S-k" #'drag-stuff-up)
 (map! :ne "C-S-j" #'drag-stuff-down)
