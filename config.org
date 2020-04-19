@@ -178,11 +178,17 @@ Uses dumb-jump to find functions, variables, and other definition
 (map! :ne "SPC j b" #'dumb-jump-back)
 #+END_SRC
 *** Text insertion
+
+Binds random hash to "space [i]nsert [h]ash"
+
 #+BEGIN_SRC emacs-lisp
-(map! :ne "SPC s h" #'insert-random-hash)
+(map! :ne "SPC i h" #'insert-random-hash)
 #+END_SRC
 
 *** Windows & frame manipulation
+
+Split the current window and focus the newly created frame
+
 #+BEGIN_SRC emacs-lisp
 (map! :ne "SPC w V" (lambda () (interactive)(evil-window-vsplit) (other-window 1)))
 #+END_SRC
