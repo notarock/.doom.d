@@ -121,6 +121,23 @@ Insert a generated 64 character long random string.
   (insert (string-trim (shell-command-to-string "< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"))))
 ```
 
+Langage-specific
+----------------
+
+### Typescript
+
+``` {.commonlisp org-language="emacs-lisp"}
+
+(add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
+
+(after! flycheck
+  (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+  (flycheck-add-mode 'css-stylelint 'typescript-mode)
+  (add-hook 'typescript-mode-hook (lambda () (flycheck-add-next-checker 'lsp-ui 'javascript-eslint)))
+  (add-hook 'typescript-mode-hook (lambda () (flycheck-add-next-checker 'javascript-eslint 'css-stylelint))))
+```
+
 Mode-specific
 -------------
 
@@ -201,11 +218,15 @@ Uses dumb-jump to find functions, variables, and other definition
 
 ### Text insertion
 
+Binds random hash to \"space \[i\]nsert \[h\]ash\"
+
 ``` {.commonlisp org-language="emacs-lisp"}
-(map! :ne "SPC s h" #'insert-random-hash)
+(map! :ne "SPC i h" #'insert-random-hash)
 ```
 
 ### Windows & frame manipulation
+
+Split the current window and focus the newly created frame
 
 ``` {.commonlisp org-language="emacs-lisp"}
 (map! :ne "SPC w V" (lambda () (interactive)(evil-window-vsplit) (other-window 1)))
@@ -237,3 +258,5 @@ Enable global git-gutter-mode
 ```
 
 ### Hooks
+
+sds
