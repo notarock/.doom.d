@@ -2,7 +2,8 @@ Notarock\'s Doom-Emacs Literate Configuration
 =============================================
 
 This file is heavily inspired by doom-emacs\'s base \`config.el\` file.
-In fact, it\'s just my personnal \`config.el\` translated to org-mode so
+In fact, it\'s just my personnal \`config.el\` translated to org-mode
+for your ready pleasures.
 
 User config
 -----------
