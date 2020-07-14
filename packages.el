@@ -58,5 +58,6 @@
 (package! nix-mode)
 (package! typescript-mode)
 (package! prettier-js)
+(package! eslint-fix)
 ;; (package! org-reveal)
 ;; (package! ox-reveal)

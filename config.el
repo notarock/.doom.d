@@ -41,13 +41,17 @@
 
 ;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
-;; ;; (after! flycheck
-;; (flycheck-add-mode 'javascript-eslint 'typescript-mode)
-;; (flycheck-add-mode 'css-stylelint 'typescript-mode)
-;; (add-hook 'typescript-mode-hook (lambda () (flycheck-add-next-checker 'lsp-ui 'javascript-eslint)))
-;; (add-hook 'typescript-mode-hook (lambda () (flycheck-add-next-checker 'javascript-eslint 'css-stylelint))))
+;; (after! flycheck
+  ;; (flycheck-add-mode 'javascript-eslint 'typescript-mode)
+  ;; (flycheck-add-mode 'css-stylelint 'typescript-mode)
+  ;; (add-hook 'typescript-mode-hook (lambda () (flycheck-add-next-checker 'lsp-ui 'javascript-eslint)))
+  ;; (add-hook 'typescript-mode-hook (lambda () (flycheck-add-next-checker 'javascript-eslint 'css-stylelint))))
+
 (add-hook 'js2-mode-hook 'prettier-js-mode)
 (add-hook 'web-mode-hook 'prettier-js-mode)
+
+(map! :map web-mode-map
+      :n "SPC m F" #'eslint-fix)
 
 (use-package org-fancy-priorities
   :hook (org-mode . org-fancy-priorities-mode)
