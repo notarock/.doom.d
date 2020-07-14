@@ -57,5 +57,6 @@
 (package! k8s-mode)
 (package! nix-mode)
 (package! typescript-mode)
+(package! prettier-js)
 ;; (package! org-reveal)
 ;; (package! ox-reveal)
