@@ -1,9 +1,9 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'doom-snazzy)
+(setq doom-theme 'doom-tomorrow-night)
 
-(setq font-family "Fantasque Sans Mono")
+(setq font-family "Hack")
 
 (if (equal (display-pixel-width) 2560)
     (setq doom-font (font-spec :family font-family :size 20)
@@ -51,6 +51,9 @@
 (add-hook 'web-mode-hook 'prettier-js-mode)
 
 (map! :map web-mode-map
+      :n "SPC m F" #'eslint-fix)
+
+(map! :map typescript-mode-map
       :n "SPC m F" #'eslint-fix)
 
 (use-package org-fancy-priorities

@@ -17,7 +17,7 @@ some email clients, file templates and snippets.
 THis function is probably the most important peice of configuration in this
 whole repository.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-snazzy)
+(setq doom-theme 'doom-tomorrow-night)
 #+END_SRC
 
 *** Font
@@ -31,7 +31,7 @@ are the three important ones:
 They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 font string.
 #+BEGIN_SRC emacs-lisp
-(setq font-family "Fantasque Sans Mono")
+(setq font-family "Hack")
 #+END_SRC
 
 This snipper adjust the font size based on if I am currently using emacs on my
@@ -129,6 +129,9 @@ Insert a generated 64 character long random string.
 (add-hook 'web-mode-hook 'prettier-js-mode)
 
 (map! :map web-mode-map
+      :n "SPC m F" #'eslint-fix)
+
+(map! :map typescript-mode-map
       :n "SPC m F" #'eslint-fix)
 #+END_SRC
 
