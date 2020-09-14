@@ -40,11 +40,12 @@ HiDPI laptop screen, or on anything else.
 TODO: Maybe add more options?
 
 #+BEGIN_SRC emacs-lisp
-(if (equal (display-pixel-width) 2560)
-    (setq doom-font (font-spec :family font-family :size 20)
-          doom-big-font (font-spec :family font-family :size 30))
+; (if (equal (display-pixel-width) 2560)
+    ; (setq doom-font (font-spec :family font-family :size 16)
+          ; doom-big-font (font-spec :family font-family :size 30))
   (setq doom-font (font-spec :family font-family :size 14)
-        doom-big-font (font-spec :family font-family :size 24)))
+        doom-big-font (font-spec :family font-family :size 24))
+;)
 #+END_SRC
 
 want to change the style of line numbers, change this to `relative' or

@@ -55,7 +55,7 @@
 (package! melancholy-theme)
 (package! org-fancy-priorities)
 (package! k8s-mode)
-(package! nix-mode)
+;; (package! nix-mode)
 (package! typescript-mode)
 (package! prettier-js)
 (package! eslint-fix)

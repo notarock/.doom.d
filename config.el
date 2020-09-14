@@ -5,11 +5,12 @@
 
 (setq font-family "Hack")
 
-(if (equal (display-pixel-width) 2560)
-    (setq doom-font (font-spec :family font-family :size 20)
-          doom-big-font (font-spec :family font-family :size 30))
+; (if (equal (display-pixel-width) 2560)
+    ; (setq doom-font (font-spec :family font-family :size 16)
+          ; doom-big-font (font-spec :family font-family :size 30))
   (setq doom-font (font-spec :family font-family :size 14)
-        doom-big-font (font-spec :family font-family :size 24)))
+        doom-big-font (font-spec :family font-family :size 24))
+;)
 
 (setq display-line-numbers-type t)
 
