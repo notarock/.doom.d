@@ -1,16 +1,12 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'base16-helios)
 
 (setq font-family "Hack")
 
-; (if (equal (display-pixel-width) 2560)
-    ; (setq doom-font (font-spec :family font-family :size 16)
-          ; doom-big-font (font-spec :family font-family :size 30))
-  (setq doom-font (font-spec :family font-family :size 14)
-        doom-big-font (font-spec :family font-family :size 24))
-;)
+(setq doom-font (font-spec :family font-family :size 18)
+    doom-big-font (font-spec :family font-family :size 28))
 
 (setq display-line-numbers-type t)
 
@@ -21,7 +17,7 @@
 (defun my/set-initial-frame ()
   "Set initial frame size and position"
   (let* ((base-factor 0.80)
-         (a-width (* (display-pixel-width) base-factor))
+         (a-width (* (display-pixel-width) (/ base-factor 2)))
          (a-height (* (display-pixel-height) base-factor))
          (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
          (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))

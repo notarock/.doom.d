@@ -17,7 +17,7 @@ some email clients, file templates and snippets.
 THis function is probably the most important peice of configuration in this
 whole repository.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-tomorrow-night)
+(setq doom-theme 'base16-helios)
 #+END_SRC
 
 *** Font
@@ -37,15 +37,9 @@ font string.
 This snipper adjust the font size based on if I am currently using emacs on my
 HiDPI laptop screen, or on anything else.
 
-TODO: Maybe add more options?
-
 #+BEGIN_SRC emacs-lisp
-; (if (equal (display-pixel-width) 2560)
-    ; (setq doom-font (font-spec :family font-family :size 16)
-          ; doom-big-font (font-spec :family font-family :size 30))
-  (setq doom-font (font-spec :family font-family :size 14)
-        doom-big-font (font-spec :family font-family :size 24))
-;)
+(setq doom-font (font-spec :family font-family :size 18)
+    doom-big-font (font-spec :family font-family :size 28))
 #+END_SRC
 
 want to change the style of line numbers, change this to `relative' or
@@ -82,7 +76,7 @@ This function reposition Emacs on startup:
 (defun my/set-initial-frame ()
   "Set initial frame size and position"
   (let* ((base-factor 0.80)
-         (a-width (* (display-pixel-width) base-factor))
+         (a-width (* (display-pixel-width) (/ base-factor 2)))
          (a-height (* (display-pixel-height) base-factor))
          (a-left (truncate (/ (- (display-pixel-width) a-width) 2)))
          (a-top (truncate (/ (- (display-pixel-height) a-height) 2))))
