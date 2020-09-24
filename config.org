@@ -185,8 +185,8 @@ Stuff that get loaded in when org-mode is initiated
 #+END_SRC
 *** Comment, indents, etc
 #+BEGIN_SRC emacs-lisp
-(map! :ne "SPC #" #'comment-or-uncomment-region)
 (map! :ne "SPC =" #'indent-buffer)
+(map! :ne "SPC #" #'comment-or-uncomment-region)
 #+END_SRC
 *** Project navigation
 Uses dumb-jump to find functions, variables, and other definition

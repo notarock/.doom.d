@@ -89,8 +89,8 @@
 (map! :ne "C-S-l" #'drag-stuff-right)
 (map! :ne "C-S-h" #'drag-stuff-left)
 
-(map! :ne "SPC #" #'comment-or-uncomment-region)
 (map! :ne "SPC =" #'indent-buffer)
+(map! :ne "SPC #" #'comment-or-uncomment-region)
 
 (map! :ne "SPC j g" #'dumb-jump-go)
 (map! :ne "SPC j b" #'dumb-jump-back)
