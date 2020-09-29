@@ -104,3 +104,7 @@
 ;;  (shell-command "pandoc config.org -o README.md")
 
 (global-git-gutter-mode +1)
+
+(global-wakatime-mode +1)
+
+(wakatime-python-bin)

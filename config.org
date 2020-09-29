@@ -231,5 +231,10 @@ Enable global git-gutter-mode
 (global-git-gutter-mode +1)
 #+END_SRC
 
+Enable global wakatime-mode
+#+BEGIN_SRC emacs-lisp
+(global-wakatime-mode +1)
+#+END_SRC
+
 *** Hooks
 sds
