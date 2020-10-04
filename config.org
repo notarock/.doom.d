@@ -142,16 +142,7 @@ Good looking bullet point, all about the eye-candy
   (setq org-fancy-priorities-list '("■" "■" "■")))
 #+END_SRC
 
-Define org files path
-
-#+BEGIN_SRC emacs-lisp
-(setq org-directory "~/Documents/Journal"
-      org-todo-file (concat org-directory "Planning.org")
-      org-journal-file (concat org-directory "Journal.org"))
-      org-notes-file (concat org-directory "notes.org")
-#+END_SRC
-
-Stuff that get loaded in when org-mode is initiated
+Org-mode configurations
 
 #+BEGIN_SRC emacs-lisp
 (after! org
@@ -159,6 +150,9 @@ Stuff that get loaded in when org-mode is initiated
         :n "M-j" #'org-metadown
         :n "M-k" #'org-metaup)
   (setq org-bullets-bullet-list '("▶")
+        org-todo-file (concat org-directory "Planning.org")
+        org-journal-file (concat org-directory "Journal.org")
+        org-notes-file (concat org-directory "notes.org")
         org-capture-templates       '(("t" "Todo" entry (file+headline "~/org/planning.org" "Tasks")
                                        "* TODO %?\n  %i\n  %a")
                                       ("j" "Journal" entry (file+datetree "~/org/journal.org")

@@ -58,16 +58,14 @@
   :config
   (setq org-fancy-priorities-list '("■" "■" "■")))
 
-(setq org-directory "~/Documents/Journal"
-      org-todo-file (concat org-directory "Planning.org")
-      org-journal-file (concat org-directory "Journal.org"))
-      org-notes-file (concat org-directory "notes.org")
-
 (after! org
   (map! :map org-mode-map
         :n "M-j" #'org-metadown
         :n "M-k" #'org-metaup)
   (setq org-bullets-bullet-list '("▶")
+        org-todo-file (concat org-directory "Planning.org")
+        org-journal-file (concat org-directory "Journal.org")
+        org-notes-file (concat org-directory "notes.org")
         org-capture-templates       '(("t" "Todo" entry (file+headline "~/org/planning.org" "Tasks")
                                        "* TODO %?\n  %i\n  %a")
                                       ("j" "Journal" entry (file+datetree "~/org/journal.org")
