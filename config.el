@@ -1,18 +1,24 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'base16-helios)
+(setq doom-theme 'base16-darktooth)
 
 (setq font-family "Hack")
 
-(setq doom-font (font-spec :family font-family :size 18)
-    doom-big-font (font-spec :family font-family :size 28))
+(setq doom-font (font-spec :family font-family :size 20)
+    doom-big-font (font-spec :family font-family :size 34))
+(setq-default line-spacing 8)
 
 (setq display-line-numbers-type t)
 
 (setq fancy-splash-image "~/.doom.d/notarock.png")
 
 (setq frame-resize-pixelwise t)
+
+(feebleline-mode +1)
+(dimmer-configure-magit)
+(dimmer-configure-org)
+(dimmer-mode t)
 
 (defun my/set-initial-frame ()
   "Set initial frame size and position"

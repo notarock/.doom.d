@@ -17,7 +17,7 @@ some email clients, file templates and snippets.
 THis function is probably the most important peice of configuration in this
 whole repository.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'base16-helios)
+(setq doom-theme 'base16-darktooth)
 #+END_SRC
 
 *** Font
@@ -38,8 +38,9 @@ This snipper adjust the font size based on if I am currently using emacs on my
 HiDPI laptop screen, or on anything else.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family font-family :size 18)
-    doom-big-font (font-spec :family font-family :size 28))
+(setq doom-font (font-spec :family font-family :size 20)
+    doom-big-font (font-spec :family font-family :size 34))
+(setq-default line-spacing 8)
 #+END_SRC
 
 want to change the style of line numbers, change this to `relative' or
@@ -60,10 +61,19 @@ Set this picture as the splash image
 (setq fancy-splash-image "~/.doom.d/notarock.png")
 #+END_SRC
 
-*** Enable pixelwise resizing
+Enable pixelwise resizing
 
 #+BEGIN_SRC emacs-lisp
 (setq frame-resize-pixelwise t)
+#+END_SRC
+
+*** Aesthetic modes
+
+#+BEGIN_SRC emacs-lisp
+(feebleline-mode +1)
+(dimmer-configure-magit)
+(dimmer-configure-org)
+(dimmer-mode t)
 #+END_SRC
 
 ** Aditionnal functions
@@ -224,4 +234,3 @@ Enable global wakatime-mode
 #+END_SRC
 
 *** Hooks
-sds
