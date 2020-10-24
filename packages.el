@@ -60,6 +60,5 @@
 (package! prettier-js)
 (package! eslint-fix)
 (package! wakatime-mode)
-(package! slime)
 (package! feebleline)
 (package! dimmer)

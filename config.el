@@ -3,11 +3,10 @@
 
 (setq doom-theme 'base16-darktooth)
 
-(setq font-family "Hack")
+(setq font-family "Essential PragmataPro")
 
 (setq doom-font (font-spec :family font-family :size 20)
     doom-big-font (font-spec :family font-family :size 34))
-(setq-default line-spacing 8)
 
 (setq display-line-numbers-type t)
 

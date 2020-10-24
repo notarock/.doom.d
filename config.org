@@ -31,7 +31,7 @@ are the three important ones:
 They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 font string.
 #+BEGIN_SRC emacs-lisp
-(setq font-family "Hack")
+(setq font-family "Essential PragmataPro")
 #+END_SRC
 
 This snipper adjust the font size based on if I am currently using emacs on my
@@ -40,7 +40,6 @@ HiDPI laptop screen, or on anything else.
 #+BEGIN_SRC emacs-lisp
 (setq doom-font (font-spec :family font-family :size 20)
     doom-big-font (font-spec :family font-family :size 34))
-(setq-default line-spacing 8)
 #+END_SRC
 
 want to change the style of line numbers, change this to `relative' or
