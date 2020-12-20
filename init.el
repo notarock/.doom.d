@@ -4,8 +4,8 @@
 ;; Remember to run 'doom sync' after modifying it!
 
 ;; NOTE Press 'SPC h d h' (or 'C-h d h' for non-vim users) to access Doom's
-;;      documentation. There you'll find information about all of Doom's modules
-;;      and what flags they support.
+;;      documentation. There you'll find a "Module Index" link where you'll find
+;;      a comprehensive list of Doom's modules and what flags they support.
 
 ;; NOTE Move your cursor over a module's name (or its flags) and press 'K' (or
 ;;      'C-c g k' for non-vim users) to view its documentation. This works on
@@ -17,9 +17,10 @@
 (doom! :input
        ;;chinese
        ;;japanese
+       ;;layout            ; auie,ctsrnm is the superior home row
 
        :completion
-       (company)           ; the ultimate code completion backend
+       company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
        (ivy +icons +fuzzy)               ; a search engine for love and life
@@ -29,11 +30,14 @@
        doom              ; what makes DOOM look the way it does
        doom-dashboard    ; a nifty splash screen for Emacs
        doom-quit         ; DOOM quit-message prompts when you quit Emacs
+       (emoji +unicode)  ; 🙂
        ;;fill-column       ; a `fill-column' indicator
        hl-todo           ; highlight TODO/FIXME/NOTE/DEPRECATED/HACK/REVIEW
        ;;hydra
        indent-guides     ; highlighted indent columns
-       ;;(modeline +light) ; snazzy, Atom-inspired modeline, plus API
+       (modeline)       ; snazzy, Atom-inspired modeline, plus API
+       ;;ligatures
+       ;;minimap
        nav-flash         ; blink the current line after jumping
        ;;neotree           ; a project drawer, like NERDTree for vim
        ophints           ; highlight the region an operation acts on
@@ -68,28 +72,28 @@
        dired             ; making dired pretty [functional]
        electric          ; smarter, keyword-based electric-indent
        ibuffer           ; interactive buffer management
+       undo
        vc                ; version-control and Emacs, sitting in a tree
 
        :term
-       eshell            ; a consistent, cross-platform shell (WIP)
+       ;; eshell            ; a consistent, cross-platform shell (WIP)
        ;;shell             ; a terminal REPL for Emacs
        ;;term              ; terminals in Emacs
-       ;;vterm             ; another terminals in Emacs
+       vterm             ; another terminals in Emacs
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       ;; spell               ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       spell               ; tasing you for misspelling mispelling
+       rammar           ; tasing grammar mistake every you make
 
        :tools
        ansible
-       ;;debugger          ; FIXME stepping through code, to help you add bugs
+       debugger          ; FIXME stepping through code, to help you add bugs
        ;;direnv
        docker
        editorconfig      ; let someone else argue about tabs vs spaces
        ;;ein               ; tame Jupyter notebooks with emacs
        (eval +overlay)     ; run code, run (also, repls)
-       lsp
        ;;gist              ; interacting with github gists
        (lookup           ; helps you navigate your code and documentation
         +docsets)        ; ...or in Dash docsets locally

@@ -62,3 +62,4 @@
 (package! wakatime-mode)
 (package! feebleline)
 (package! dimmer)
+(package! highlight-indent-guides)

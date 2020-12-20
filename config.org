@@ -17,7 +17,7 @@ some email clients, file templates and snippets.
 THis function is probably the most important peice of configuration in this
 whole repository.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'base16-darktooth)
+(setq doom-theme 'doom-monokai-classic)
 #+END_SRC
 
 *** Font
@@ -69,10 +69,12 @@ Enable pixelwise resizing
 *** Aesthetic modes
 
 #+BEGIN_SRC emacs-lisp
-(feebleline-mode +1)
+; (feebleline-mode +1)
 (dimmer-configure-magit)
 (dimmer-configure-org)
 (dimmer-mode t)
+(setq highlight-indent-guides-method 'fill)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 #+END_SRC
 
 ** Aditionnal functions
@@ -128,6 +130,13 @@ Need to type out :quit to close emacs
 
 
 ** Langage-specific
+*** Python
+
+Python language server stupidity
+#+begin_src emacs-lisp
+(setq lsp-python-ms-executable (executable-find "python-language-server"))
+#+end_src
+
 *** Typescript
 #+BEGIN_SRC emacs-lisp
 ;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
@@ -171,9 +180,7 @@ Org-mode configurations
         org-todo-file (concat org-directory "Planning.org")
         org-journal-file (concat org-directory "Journal.org")
         org-notes-file (concat org-directory "notes.org")
-        org-capture-templates       '(("t" "Todo" entry (file+headline "~/org/planning.org" "Tasks")
-                                       "* TODO %?\n  %i\n  %a")
-                                      ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        org-capture-templates       '(("j" "Journal" entry (file+datetree "~/org/journal.org")
                                        "* %?\nEntered on %U\n  %i\n  %a"))
         org-todo-keyword-faces (quote (("TODO" :foreground "#ff6347" :weight bold)
                                        ("DONE" :foreground "#006400" :weight bold :strike-through t)))

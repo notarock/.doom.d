@@ -1,7 +1,7 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'base16-darktooth)
+(setq doom-theme 'doom-monokai-classic)
 
 (setq font-family "Essential PragmataPro")
 
@@ -14,10 +14,12 @@
 
 (setq frame-resize-pixelwise t)
 
-(feebleline-mode +1)
+; (feebleline-mode +1)
 (dimmer-configure-magit)
 (dimmer-configure-org)
 (dimmer-mode t)
+(setq highlight-indent-guides-method 'fill)
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
 (defun my/set-initial-frame ()
   "Set initial frame size and position"
@@ -43,6 +45,8 @@
 
 (evil-ex-define-cmd "q" 'kill-this-buffer)
 (evil-ex-define-cmd "quit" 'evil-quit)
+
+(setq lsp-python-ms-executable (executable-find "python-language-server"))
 
 ;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
@@ -74,9 +78,7 @@
         org-todo-file (concat org-directory "Planning.org")
         org-journal-file (concat org-directory "Journal.org")
         org-notes-file (concat org-directory "notes.org")
-        org-capture-templates       '(("t" "Todo" entry (file+headline "~/org/planning.org" "Tasks")
-                                       "* TODO %?\n  %i\n  %a")
-                                      ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        org-capture-templates       '(("j" "Journal" entry (file+datetree "~/org/journal.org")
                                        "* %?\nEntered on %U\n  %i\n  %a"))
         org-todo-keyword-faces (quote (("TODO" :foreground "#ff6347" :weight bold)
                                        ("DONE" :foreground "#006400" :weight bold :strike-through t)))
