@@ -38,8 +38,8 @@ This snipper adjust the font size based on if I am currently using emacs on my
 HiDPI laptop screen, or on anything else.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family font-family :size 20)
-    doom-big-font (font-spec :family font-family :size 34))
+(setq doom-font (font-spec :family font-family :size 14)
+    doom-big-font (font-spec :family font-family :size 28))
 #+END_SRC
 
 want to change the style of line numbers, change this to `relative' or
@@ -116,6 +116,15 @@ Insert a generated 64 character long random string.
   (interactive)
   (insert (string-trim (shell-command-to-string "< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"))))
 #+END_SRC
+
+`:q` should kill the current buffer rather than quitting emacs entirely
+Need to type out :quit to close emacs
+
+#+BEGIN_SRC emacs-lisp
+(evil-ex-define-cmd "q" 'kill-this-buffer)
+(evil-ex-define-cmd "quit" 'evil-quit)
+#+END_SRC
+
 
 
 ** Langage-specific

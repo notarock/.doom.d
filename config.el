@@ -5,8 +5,8 @@
 
 (setq font-family "Essential PragmataPro")
 
-(setq doom-font (font-spec :family font-family :size 20)
-    doom-big-font (font-spec :family font-family :size 34))
+(setq doom-font (font-spec :family font-family :size 14)
+    doom-big-font (font-spec :family font-family :size 28))
 
 (setq display-line-numbers-type t)
 
@@ -40,6 +40,9 @@
 (defun insert-random-hash ()
   (interactive)
   (insert (string-trim (shell-command-to-string "< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-64};echo;"))))
+
+(evil-ex-define-cmd "q" 'kill-this-buffer)
+(evil-ex-define-cmd "quit" 'evil-quit)
 
 ;; (add-to-list 'auto-mode-alist '("\\.ts\\'" . typescript-mode))
 ;; (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-mode))
