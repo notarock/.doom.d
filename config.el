@@ -72,17 +72,32 @@
 
 (after! org
   (map! :map org-mode-map
-        :n "M-j" #'org-metadown
-        :n "M-k" #'org-metaup)
+        :n "m-j" #'org-metadown
+        :n "m-k" #'org-metaup)
   (setq org-bullets-bullet-list '("▶")
-        org-todo-file (concat org-directory "Planning.org")
-        org-journal-file (concat org-directory "Journal.org")
-        org-notes-file (concat org-directory "notes.org")
-        org-capture-templates       '(("j" "Journal" entry (file+datetree "~/org/journal.org")
-                                       "* %?\nEntered on %U\n  %i\n  %a"))
-        org-todo-keyword-faces (quote (("TODO" :foreground "#ff6347" :weight bold)
-                                       ("DONE" :foreground "#006400" :weight bold :strike-through t)))
-        org-todo-keywords '((sequence "TODO(t)" "DONE(d)"))
+        org-directory "~/org/"
+        org-journal-file (concat org-directory "journal.org")
+        org-todos-file (concat org-directory "todos.org")
+        org-capture-templates       (doct '(("Journal" :keys "j"
+                                             :file org-journal-file
+                                             :datetree t
+                                             :todo nil
+                                             :template ("* %^{description}"
+                                                        ":properties:"
+                                                        ":created: %u"
+                                                        ":end:"
+                                                        "%?"))
+                                            ("Todos" :keys "t"
+                                             :file org-todos-file
+                                             :todo-state "TODO"
+                                             :template ("* TODO: %^{description}"
+                                                        ":properties:"
+                                                        ":created: %u"
+                                                        ":end:"))
+                                            ))
+        org-todo-keyword-faces (quote (("todo" :foreground "#ff6347" :weight bold)
+                                       ("done" :foreground "#006400" :weight bold :strike-through t)))
+        org-todo-keywords '((sequence "todo(t)" "done(d)"))
         org-log-done t))
 
 (map! :ne "C-S-k" #'drag-stuff-up)

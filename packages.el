@@ -63,3 +63,4 @@
 (package! feebleline)
 (package! dimmer)
 (package! highlight-indent-guides)
+(package! doct)
