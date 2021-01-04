@@ -38,8 +38,8 @@ This snipper adjust the font size based on if I am currently using emacs on my
 HiDPI laptop screen, or on anything else.
 
 #+BEGIN_SRC emacs-lisp
-(setq doom-font (font-spec :family font-family :size 14)
-    doom-big-font (font-spec :family font-family :size 28))
+(setq doom-font (font-spec :family font-family :size 22)
+    doom-big-font (font-spec :family font-family :size 34))
 #+END_SRC
 
 want to change the style of line numbers, change this to `relative' or
