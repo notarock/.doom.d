@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: SEQ_TODO
+# uuid:
+# key: trigger-key
+# condition: t
+# --
+#+SEQ_TODO: NEXT(n) TODO(t) WAITING(w) SOMEDAY(s) PROJ(p) | DONE(d) CANCELLED(c)
