@@ -127,8 +127,6 @@ Need to type out :quit to close emacs
 (evil-ex-define-cmd "quit" 'evil-quit)
 #+END_SRC
 
-
-
 ** Langage-specific
 *** Python
 
@@ -202,6 +200,12 @@ Org-mode configurations
         org-todo-keywords '((sequence "todo(t)" "done(d)"))
         org-log-done t))
 #+end_src
+*** Spell-fu
+Contains configuration for using spell-fu with hunspell.
+see
+https://github.com/hlissner/doom-emacs/tree/develop/modules/checkers/spell#features
+
+
 ** Keybinds
 *** Text manipulation
 #+BEGIN_SRC emacs-lisp

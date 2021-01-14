@@ -83,8 +83,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       (spell +hunspell +everywhere)   ; tasing you for misspelling mispelling
-       rammar           ; tasing grammar mistake every you make
+       (spell +everywhere) ; tasing you for misspelling mispelling
+       rammar              ; tasing grammar mistake every you make
 
        :tools
        ansible
