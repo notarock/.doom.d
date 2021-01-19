@@ -175,6 +175,7 @@ Org-mode configurations
         :n "m-j" #'org-metadown
         :n "m-k" #'org-metaup)
   (setq org-bullets-bullet-list '("▶")
+        ispell-dictionary "fr-toutesvariantes"
         org-directory "~/org/"
         org-journal-file (concat org-directory "journal.org")
         org-todos-file (concat org-directory "todos.org")
@@ -200,11 +201,12 @@ Org-mode configurations
         org-todo-keywords '((sequence "todo(t)" "done(d)"))
         org-log-done t))
 #+end_src
-*** Spell-fu
-Contains configuration for using spell-fu with hunspell.
-see
-https://github.com/hlissner/doom-emacs/tree/develop/modules/checkers/spell#features
 
+*** Markdown-mode
+#+begin_src emacs-lisp
+(after! markdown
+  (setq ispell-dictionary "fr-toutesvariantes"))
+#+end_src
 
 ** Keybinds
 *** Text manipulation

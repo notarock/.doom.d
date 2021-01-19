@@ -75,6 +75,7 @@
         :n "m-j" #'org-metadown
         :n "m-k" #'org-metaup)
   (setq org-bullets-bullet-list '("▶")
+        ispell-dictionary "fr-toutesvariantes"
         org-directory "~/org/"
         org-journal-file (concat org-directory "journal.org")
         org-todos-file (concat org-directory "todos.org")
@@ -99,6 +100,9 @@
                                        ("done" :foreground "#006400" :weight bold :strike-through t)))
         org-todo-keywords '((sequence "todo(t)" "done(d)"))
         org-log-done t))
+
+(after! markdown
+  (setq ispell-dictionary "fr-toutesvariantes"))
 
 (map! :ne "C-S-k" #'drag-stuff-up)
 (map! :ne "C-S-j" #'drag-stuff-down)

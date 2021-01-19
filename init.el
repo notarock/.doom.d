@@ -82,9 +82,9 @@
        ;; vterm             ; another terminals in Emacs
 
        :checkers
-       syntax              ; tasing you for every semicolon you forget
-       (spell +everywhere) ; tasing you for misspelling mispelling
-       rammar              ; tasing grammar mistake every you make
+       ;; syntax              ; tasing you for every semicolon you forget
+       (spell +flyspell +everywhere +hunspell) ; tasing you for misspelling mispelling
+       ;;grammar              ; tasing grammar mistake every you make
 
        :tools
        ansible
