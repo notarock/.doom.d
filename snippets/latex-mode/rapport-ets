@@ -1,0 +1,33 @@
+# -*- mode: snippet -*-
+# name: rapport-ets
+# key:
+# --
+
+\documentclass[11pt]{article}
+\usepackage[french]{babel}
+\usepackage{amsmath,amssymb,anysize,enumerate}
+\usepackage[latin1]{inputenc}
+
+%
+
+%
+
+\begin{document}
+
+% Page présentation
+\title{
+  {\Huge École de technologie supérieure}\\\\[4cm]%
+  {\Large ABC 123} \\\\ Nom du cours\\\\[4cm]%
+  {\textsc{Devoir/Labortoire}}\\\\[1cm]%
+  {\large Travail présenté à: Monsieur LeProf} \\\\[4cm]%
+}
+\author{ÉCRIVEZ VOTRE NOM}
+\pagenumbering{gobble}
+%
+\maketitle
+\newpage
+\pagenumbering{arabic}
+
+% Contenu ici
+
+\end{document}
