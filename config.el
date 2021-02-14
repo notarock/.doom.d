@@ -1,7 +1,7 @@
 (setq user-full-name "Roch D'Amour"
       user-mail-address "roch.damour@gmail.com")
 
-(setq doom-theme 'doom-monokai-classic)
+(setq doom-theme 'base16-brewer)
 
 (setq font-family "Essential PragmataPro")
 
@@ -74,8 +74,7 @@
   (map! :map org-mode-map
         :n "m-j" #'org-metadown
         :n "m-k" #'org-metaup)
-  (setq org-bullets-bullet-list '("▶")
-        ispell-dictionary "fr-toutesvariantes"
+  (setq ispell-local-dictionary "fr-toutesvariantes"
         org-directory "~/org/"
         org-journal-file (concat org-directory "journal.org")
         org-todos-file (concat org-directory "todos.org")
@@ -102,7 +101,7 @@
         org-log-done t))
 
 (after! markdown
-  (setq ispell-dictionary "fr-toutesvariantes"))
+  (setq ispell-local-dictionary "fr-toutesvariantes"))
 
 (map! :ne "C-S-k" #'drag-stuff-up)
 (map! :ne "C-S-j" #'drag-stuff-down)
@@ -126,3 +125,5 @@
 (global-git-gutter-mode +1)
 
 (global-wakatime-mode +1)
+
+(setq ispell-dictionary "en_US")

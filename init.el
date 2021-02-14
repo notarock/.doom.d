@@ -151,6 +151,7 @@
         +pandoc          ; export-with-pandoc support
         +journal
         +pomodoro        ; be fruitful with the tomato technique
+        +pretty
         +present)        ; using org-mode for presentations
        raku              ; write code no one else can comprehend
        (php +lsp)        ; perl's insecure younger brother

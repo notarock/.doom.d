@@ -17,7 +17,7 @@ some email clients, file templates and snippets.
 THis function is probably the most important peice of configuration in this
 whole repository.
 #+BEGIN_SRC emacs-lisp
-(setq doom-theme 'doom-monokai-classic)
+(setq doom-theme 'base16-brewer)
 #+END_SRC
 
 *** Font
@@ -174,8 +174,7 @@ Org-mode configurations
   (map! :map org-mode-map
         :n "m-j" #'org-metadown
         :n "m-k" #'org-metaup)
-  (setq org-bullets-bullet-list '("▶")
-        ispell-dictionary "fr-toutesvariantes"
+  (setq ispell-local-dictionary "fr-toutesvariantes"
         org-directory "~/org/"
         org-journal-file (concat org-directory "journal.org")
         org-todos-file (concat org-directory "todos.org")
@@ -205,7 +204,7 @@ Org-mode configurations
 *** Markdown-mode
 #+begin_src emacs-lisp
 (after! markdown
-  (setq ispell-dictionary "fr-toutesvariantes"))
+  (setq ispell-local-dictionary "fr-toutesvariantes"))
 #+end_src
 
 ** Keybinds
@@ -270,3 +269,6 @@ Enable global wakatime-mode
 #+END_SRC
 
 *** Hooks
+#+begin_src emacs-lisp
+(setq ispell-dictionary "en_US")
+#+end_src
