@@ -77,6 +77,17 @@ Enable pixelwise resizing
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 #+END_SRC
 
+Only show trailing whitespaces on programming, org and markdown mode.
+
+#+BEGIN_SRC emacs-lisp
+(add-hook 'prog-mode-hook (lambda ()
+                             (setq show-trailing-whitespace t)))
+(add-hook 'org-mode-hook (lambda ()
+                             (setq show-trailing-whitespace t)))
+(add-hook 'markdown-mode-hook (lambda ()
+                             (setq show-trailing-whitespace t)))
+#+END_SRC
+
 ** Aditionnal functions
 
 This function reposition Emacs on startup:

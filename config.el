@@ -21,6 +21,13 @@
 (setq highlight-indent-guides-method 'fill)
 (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
 
+(add-hook 'prog-mode-hook (lambda ()
+                             (setq show-trailing-whitespace t)))
+(add-hook 'org-mode-hook (lambda ()
+                             (setq show-trailing-whitespace t)))
+(add-hook 'markdown-mode-hook (lambda ()
+                             (setq show-trailing-whitespace t)))
+
 (defun my/set-initial-frame ()
   "Set initial frame size and position"
   (let* ((base-factor 0.80)
